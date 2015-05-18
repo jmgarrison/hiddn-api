@@ -4,6 +4,12 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  # Associations
+
+  has_many :auth_tokens
+
+  # Validations
+
   validates :email, { email: true, presence: true }
   validates :first_name, { presence: true }
   validates :last_name, { presence: true }
