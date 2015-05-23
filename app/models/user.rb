@@ -15,4 +15,11 @@ class User < ActiveRecord::Base
   validates :last_name, { presence: true }
   validates :password, { length: { minimum: MINIMUM_PASSWORD_LENGTH } }
 
+  # Virtual Attributes
+  attr_accessor :auth_token
+
+  def generate_auth_token!
+    self.auth_token = auth_tokens.create
+  end
+
 end

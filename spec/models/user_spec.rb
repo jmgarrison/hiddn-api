@@ -26,4 +26,14 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe '#generate_auth_token!' do
+    it 'generates a new AuthToken and sets it to #auth_token' do
+      user = FactoryGirl.create(:user)
+      expect(user.auth_token).to be_nil
+
+      expect{ user.generate_auth_token! }.to change{ user.auth_tokens.count }.by(1)
+      expect(user.auth_token).to eq(user.auth_tokens.last)
+    end
+  end
+
 end
