@@ -1,0 +1,3 @@
+db_user: 'hiddn'
+db_password: 'abc123'
+redis_provider: 'redis://127.0.0.1:6379'

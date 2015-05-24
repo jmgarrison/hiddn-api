@@ -46,4 +46,26 @@ RSpec.describe AuthToken, type: :model do
 
   end
 
+  # Scopes
+
+  describe '.active' do
+    it 'returns all records where expires_at is greater than or equal to now' do
+      Timecop.freeze do
+        active = FactoryGirl.create_list(:auth_token, 2)
+        expired = FactoryGirl.create_list(:auth_token, 2, :expired)
+        expect(AuthToken.active).to contain_exactly(*active)
+      end
+    end
+  end
+
+  describe '.expired' do
+    it 'returns all records where expires_at is greater than or equal to now' do
+      Timecop.freeze do
+        active = FactoryGirl.create_list(:auth_token, 2)
+        expired = FactoryGirl.create_list(:auth_token, 2, :expired)
+        expect(AuthToken.expired).to contain_exactly(*expired)
+      end
+    end
+  end
+
 end

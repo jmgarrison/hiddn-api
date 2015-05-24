@@ -17,6 +17,11 @@ class AuthToken < ActiveRecord::Base
 
   validate :expires_at_before_now, on: :create
 
+  # Scopes
+
+  scope :active, -> { where('expires_at >= ?', Time.zone.now) }
+  scope :expired, -> { where('expires_at < ?', Time.zone.now) }
+
   private
 
   def expires_at_before_now

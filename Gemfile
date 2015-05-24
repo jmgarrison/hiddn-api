@@ -12,13 +12,17 @@ gem 'active_model_serializers'
 gem 'bcrypt', '~> 3.1.10'
 gem 'email_validator'
 gem 'figaro'
+gem 'foreman'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'pg'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'responders', '~> 2.0'
+gem 'sidekiq'
+gem 'sinatra', require: false
 gem 'turbolinks'
 gem 'unicorn'
+gem 'whenever', require: false
 
 group :development, :test do
   gem 'byebug'
