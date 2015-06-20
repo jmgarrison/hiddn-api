@@ -5,5 +5,11 @@ FactoryGirl.define do
     last_name { Faker::Name.last_name }
     password { Faker::Internet.password }
     password_confirmation { |u| u.password }
+
+    trait :with_auth_token do
+      after(:create) do |user, evaluator|
+        create(:auth_token, user: user)
+      end
+    end
   end
 end

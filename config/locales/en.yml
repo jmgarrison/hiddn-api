@@ -6,3 +6,6 @@ en:
           attributes:
             expires_at:
               in_past: "must be after %{now}"
+  responses:
+    errors:
+      invalid_credentials: 'Invalid credentials'
