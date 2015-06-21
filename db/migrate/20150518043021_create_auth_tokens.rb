@@ -1,8 +1,8 @@
 class CreateAuthTokens < ActiveRecord::Migration
   def change
-    create_table :auth_tokens do |t|
+    create_table :auth_tokens, id: :uuid do |t|
       t.datetime :expires_at, null: false
-      t.integer :user_id, null: false
+      t.uuid :user_id, null: false
       t.string :value, null: false
 
       t.timestamps null: false

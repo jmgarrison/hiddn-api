@@ -15,10 +15,11 @@ ActiveRecord::Schema.define(version: 20150524232753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
-  create_table "auth_tokens", force: :cascade do |t|
+  create_table "auth_tokens", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.datetime "expires_at", null: false
-    t.integer  "user_id",    null: false
+    t.uuid     "user_id",    null: false
     t.string   "value",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -28,7 +29,7 @@ ActiveRecord::Schema.define(version: 20150524232753) do
   add_index "auth_tokens", ["user_id", "value"], name: "index_auth_tokens_on_user_id_and_value", unique: true, using: :btree
   add_index "auth_tokens", ["value"], name: "index_auth_tokens_on_value", unique: true, using: :btree
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "email",           null: false
     t.string   "first_name",      null: false
     t.string   "last_name",       null: false
