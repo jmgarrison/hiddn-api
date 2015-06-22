@@ -8,6 +8,10 @@ RSpec.describe V1::SessionsController, type: :controller do
 
     let(:user) { FactoryGirl.create(:user) }
 
+    it 'is routable via POST /v1/sessions' do
+      expect(post: '/v1/sessions').to route_to(controller: 'v1/sessions', action: 'create')
+    end
+
     describe 'with valid user credentials' do
       it 'responds with the user and auth token' do
         request = -> { post :create, user: { email: user.email, password: user.password } }
@@ -46,6 +50,10 @@ RSpec.describe V1::SessionsController, type: :controller do
   describe 'DELETE destroy' do
 
     include_context 'authenticated'
+
+    it 'is routable via DELETE /v1/sessions' do
+      expect(delete: '/v1/sessions').to route_to(controller: 'v1/sessions', action: 'destroy')
+    end
 
     it 'destroys the auth token from the Authorization header' do
       delete :destroy

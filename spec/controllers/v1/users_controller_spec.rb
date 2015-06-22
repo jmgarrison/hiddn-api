@@ -7,6 +7,10 @@ RSpec.describe V1::UsersController, type: :controller do
     let(:user) { assigns(:user) }
     let(:valid_attributes) { FactoryGirl.attributes_for(:user) }
 
+    it 'is routable via POST /v1/users' do
+      expect(post: '/v1/users').to route_to(controller: 'v1/users', action: 'create')
+    end
+
     it 'responds with the user and auth token with valid parameters' do
       user_count = User.count
       auth_token_count = AuthToken.count
