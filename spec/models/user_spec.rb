@@ -5,6 +5,7 @@ RSpec.describe User, type: :model do
   # Associations
 
   it { should have_many(:auth_tokens) }
+  it { should have_one(:user_preference) }
 
   # Validations
 

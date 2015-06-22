@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150524232753) do
+ActiveRecord::Schema.define(version: 20150621195603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+  enable_extension "hstore"
 
   create_table "auth_tokens", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.datetime "expires_at", null: false
@@ -28,6 +29,17 @@ ActiveRecord::Schema.define(version: 20150524232753) do
   add_index "auth_tokens", ["expires_at"], name: "index_auth_tokens_on_expires_at", using: :btree
   add_index "auth_tokens", ["user_id", "value"], name: "index_auth_tokens_on_user_id_and_value", unique: true, using: :btree
   add_index "auth_tokens", ["value"], name: "index_auth_tokens_on_value", unique: true, using: :btree
+
+  create_table "user_preferences", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.hstore   "types",        null: false
+    t.decimal  "min_rating",   null: false
+    t.uuid     "user_id",      null: false
+    t.string   "session_uuid"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "user_preferences", ["user_id"], name: "index_user_preferences_on_user_id", using: :btree
 
   create_table "users", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "email",           null: false

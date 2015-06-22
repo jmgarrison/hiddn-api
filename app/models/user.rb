@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   # Associations
 
   has_many :auth_tokens
+  has_one :user_preference
 
   # Validations
 
