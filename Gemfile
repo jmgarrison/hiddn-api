@@ -1,39 +1,21 @@
 source 'https://rubygems.org'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.1'
+gem 'rails', '~> 5.0.0'
 
-# Assets
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
-
-gem 'active_model_serializers'
-gem 'bcrypt', '~> 3.1.10'
-gem 'email_validator'
 gem 'figaro'
-gem 'foreman'
-gem 'jbuilder', '~> 2.0'
-gem 'jquery-rails'
 gem 'pg'
-gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'responders', '~> 2.0'
-gem 'sidekiq'
-gem 'sinatra', require: false
-gem 'turbolinks'
-gem 'unicorn'
-gem 'whenever', require: false
+gem 'puma', '~> 3.0'
+gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
-  gem 'byebug'
-  gem 'factory_girl_rails'
-  gem 'faker'
-  gem 'rspec-rails', '~> 3.0'
-  gem 'spring'
-  gem 'web-console', '~> 2.0'
+  gem 'byebug', platform: :mri
 end
 
-group :test do
-  gem 'shoulda-matchers', require: false
-  gem 'timecop'
+group :development do
+  gem 'listen', '~> 3.0.5'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
 end
+
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

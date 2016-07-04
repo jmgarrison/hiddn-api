@@ -1,18 +1,2 @@
-class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :null_session, if: :json_request?
-
-  serialization_scope :view_context
-
-  def render_error(error)
-    render json: error, status: error.status
-  end
-
-  protected
-
-  def json_request?
-    request.format.json?
-  end
-
+class ApplicationController < ActionController::API
 end
