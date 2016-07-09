@@ -2,11 +2,12 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 5.0.0'
 
+gem 'active_model_serializers', '~> 0.10.0'
+gem 'bcrypt', '~> 3.1.7'
 gem 'email_validator'
 gem 'figaro'
 gem 'pg'
 gem 'puma', '~> 3.0'
-gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
   gem 'byebug', platform: :mri
@@ -22,6 +23,7 @@ group :development do
 end
 
 group :test do
+  gem 'rails-controller-testing'
   gem 'shoulda-matchers', require: false
   gem 'timecop'
 end
