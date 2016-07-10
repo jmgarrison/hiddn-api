@@ -8,6 +8,7 @@ gem 'email_validator'
 gem 'figaro'
 gem 'pg'
 gem 'puma', '~> 3.0'
+gem 'sidekiq'
 
 group :development, :test do
   gem 'byebug', platform: :mri
