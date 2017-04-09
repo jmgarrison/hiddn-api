@@ -1,2 +1,3 @@
 db_user: 'hiddn'
 db_password: 'abc123'
+secret_key_base: '4emaie6ce0b142f4ca63a8607b39bf3928f1b84a1fa4ac9e203da714d245b2bc0287c1aeea987739302075763e0b9cb94a663cae724b656033961bf3564d0'
